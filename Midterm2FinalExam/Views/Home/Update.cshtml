@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Midterm2FinalExam.Models.QuoteInfo
+
+<!--Form to update existing quote-->
+<form method="post" asp-action="Update">
+
+    <input type="hidden" value="@Model.QuoteID" name="QuoteID" />
+
+    <label asp-for="Quote">Quote: </label>
+    <input asp-for="Quote" />
+    <br />
+
+    <label asp-for="AuthorSpeaker">Author/Speaker: </label>
+    <input asp-for="AuthorSpeaker" />
+    <br />
+
+    <label asp-for="Date">Date: </label>
+    <input asp-for="Date" />
+    <br />
+
+    <label asp-for="Subject">Subject: </label>
+    <input asp-for="Subject" />
+    <br />
+
+    <label asp-for="Citation">Citation: </label>
+    <input asp-for="Citation" />
+    <br />
+
+    <button type="submit">Submit Quote</button>
+    <div asp-validation-summary="All"></div>
+</form>

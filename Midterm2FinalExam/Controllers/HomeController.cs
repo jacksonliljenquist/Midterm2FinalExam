@@ -66,6 +66,31 @@ namespace Midterm2FinalExam.Controllers
             return View("Confirmation");
         }
 
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            QuoteInfo itemUpdate = _context.QuoteInfo.Where(x => x.QuoteID == id).FirstOrDefault();
+            return View(itemUpdate);
+        }
+
+        [HttpPost]
+        public IActionResult Update (QuoteInfo updatedObj)
+        {
+            if (ModelState.IsValid)
+            {
+                QuoteInfo itemUpdate = _context.QuoteInfo.Where(x => x.QuoteID == updatedObj.QuoteID).FirstOrDefault();
+                itemUpdate.Quote = updatedObj.Quote;
+                itemUpdate.AuthorSpeaker = updatedObj.AuthorSpeaker;
+                itemUpdate.Date = updatedObj.Date;
+                itemUpdate.Subject = updatedObj.Subject;
+                itemUpdate.Citation = updatedObj.Citation;
+                _context.SaveChanges();
+                return View("Confirmation");
+            }
+
+            return View(updatedObj);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

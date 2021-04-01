@@ -15,7 +15,7 @@ namespace Midterm2FinalExam.Models
         [Required]
         public string AuthorSpeaker { get; set; }
         [Required]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public string Subject { get; set; }
         public string Citation { get; set; }

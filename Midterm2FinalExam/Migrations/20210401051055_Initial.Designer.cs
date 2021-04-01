@@ -9,7 +9,7 @@ using Midterm2FinalExam.Models;
 namespace Midterm2FinalExam.Migrations
 {
     [DbContext(typeof(QuoteListDbContext))]
-    [Migration("20210401035748_Initial")]
+    [Migration("20210401051055_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

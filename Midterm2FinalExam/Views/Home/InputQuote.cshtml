@@ -6,27 +6,29 @@
 
 @model Midterm2FinalExam.Models.QuoteInfo
 
-<form method="post" asp-action="InputQuote">
-    <label asp-for="Quote">Quote: </label>
-    <input asp-for="Quote" />
-    <br />
+    <!--Form to input quote-->
 
-    <label asp-for="AuthorSpeaker">Author/Speaker: </label>
-    <input asp-for="AuthorSpeaker" />
-    <br />
+    <form method="post" asp-action="InputQuote">
+        <label asp-for="Quote">Quote: </label>
+        <input asp-for="Quote" />
+        <br />
 
-    <label asp-for="Date">Date: </label>
-    <input asp-for="Date" />
-    <br />
+        <label asp-for="AuthorSpeaker">Author/Speaker: </label>
+        <input asp-for="AuthorSpeaker" />
+        <br />
 
-    <label asp-for="Subject">Subject: </label>
-    <input asp-for="Subject" />
-    <br />
+        <label asp-for="Date">Date: </label>
+        <input asp-for="Date" />
+        <br />
 
-    <label asp-for="Citation">Citation: </label>
-    <input asp-for="Citation" />
-    <br />
+        <label asp-for="Subject">Subject: </label>
+        <input asp-for="Subject" />
+        <br />
 
-    <button type="submit">Submit Quote</button>
-    <div asp-validation-summary="All"></div>
-</form>
+        <label asp-for="Citation">Citation: </label>
+        <input asp-for="Citation" />
+        <br />
+
+        <button type="submit">Submit Quote</button>
+        <div asp-validation-summary="All"></div>
+    </form>
