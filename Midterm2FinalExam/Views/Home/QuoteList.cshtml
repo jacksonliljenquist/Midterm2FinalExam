@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IQueryable<QuoteInfo>
+
+<style>
+    table, th, td {
+        padding: 15px;
+        align-content: center;
+    }
+    /*BOOTSTRAP #1 Adding in alternating colors to differentiate rows */
+    tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<table style="width: 100%; height:100%;">
+    <tr>
+        <th colspan="2">Quote</th>
+        <th>Author/Speaker</th>
+        <th>Date</th>
+        <th>Subject</th>
+        <th>Citation</th>
+        <th>Edit/Delete</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+
+        <tr>
+            <td colspan="2">@x.Quote</td>
+            <td>@x.AuthorSpeaker</td>
+            <td>@x.Date </td>
+            <td>@x.Subject </td>
+            <td>@x.Citation</td>
+            <td class="text-center">
+                <form>
+                    <input value="@x.QuoteID" type="hidden" name="id" />
+                    <input type="submit" asp-action="Delete" value="Delete" class="btn btn-primary"/>
+                </form>
+                <form>
+                    <input value="@x.QuoteID" type="hidden" name="id" />
+                    <input type="submit" asp-action="Update" value="Update" class="btn btn-primary" />
+                </form>
+                
+            </td>
+        </tr>
+    }
+</table>

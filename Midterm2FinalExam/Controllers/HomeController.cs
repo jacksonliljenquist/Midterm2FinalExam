@@ -13,9 +13,16 @@ namespace Midterm2FinalExam.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private IQuoteRepository _repository;
+        
+        private QuoteListDbContext _context { get; set; }
+
+        public HomeController(ILogger<HomeController> logger, IQuoteRepository repository, QuoteListDbContext context)
         {
             _logger = logger;
+            _repository = repository;
+            _context = context;
+
         }
 
         public IActionResult Index()
@@ -26,6 +33,37 @@ namespace Midterm2FinalExam.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult InputQuote()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult InputQuote(QuoteInfo quoteInput)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.QuoteInfo.Add(quoteInput);
+                _context.SaveChanges();
+                return View("Confirmation");
+            }
+            return View(quoteInput);
+        }
+
+        public IActionResult QuoteList ()
+        {
+            return View(_repository.QuoteInfo);
+        }
+
+        public IActionResult Delete (int id)
+        {
+            QuoteInfo itemRemove = _context.QuoteInfo.Where(x => x.QuoteID == id).FirstOrDefault();
+            _context.QuoteInfo.Remove(itemRemove);
+            _context.SaveChanges();
+            return View("Confirmation");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
